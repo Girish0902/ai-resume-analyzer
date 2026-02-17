@@ -1,0 +1,6 @@
+streamlit>=1.27.0
+PyPDF2
+scikit-learn
+numpy
+openai
+pillow
