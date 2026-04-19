@@ -4,7 +4,7 @@ class InterviewBot:
     """
     def __init__(self, client):
         self.client = client
-        self.model = "llama3-70b-8192"
+        self.model = "llama-3.3-70b-versatile"
 
     def generate_question(self, job_description: str, history: list) -> str:
         """

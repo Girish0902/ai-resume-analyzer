@@ -40,7 +40,7 @@ def compute_ats_score(client, resume_data: dict, job_data: dict) -> dict:
     
     try:
         response = client.chat.completions.create(
-            model="llama3-70b-8192", # Using robust model on Groq
+            model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant designed to output JSON."},
                 {"role": "user", "content": prompt}

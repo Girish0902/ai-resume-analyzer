@@ -1,25 +1,11 @@
-import google.generativeai as genai
-
 class Chatbot:
     """
-<<<<<<< HEAD
     AI-powered career guidance chatbot using Groq (OpenAI Client).
     """
 
     def __init__(self, client):
         self.client = client
-        self.model = "llama3-70b-8192"
-=======
-    AI-powered career guidance chatbot using Google Gemini.
-    """
-
-    def __init__(self, api_key: str):
-        if not api_key:
-            raise ValueError("API Key is required for the Chatbot.")
-        
-        genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-flash-latest')
->>>>>>> 6a621e2ba79fde1c3b79c431744a2cacc52f2ee2
+        self.model = "llama-3.3-70b-versatile"
 
     def ask_question(self, question: str, context: dict) -> str:
         
@@ -49,22 +35,10 @@ class Chatbot:
         """
 
         try:
-<<<<<<< HEAD
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}]
             )
             return response.choices[0].message.content
         except Exception as e:
-=======
-            print(f"DEBUG: Generating response for question: {question}")
-            # Use 'gemini-flash-latest' which is likely the standard model alias
-            model = genai.GenerativeModel('gemini-flash-latest') 
-            response = model.generate_content(prompt)
-            print(f"DEBUG: Response generated successfully: {len(response.text)} chars")
-            return response.text
-        except Exception as e:
-            print(f"DEBUG: Error in generation: {e}")
->>>>>>> 6a621e2ba79fde1c3b79c431744a2cacc52f2ee2
             return f"I encountered an error: {str(e)}"
-

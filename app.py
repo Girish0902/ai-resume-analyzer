@@ -28,10 +28,13 @@ with st.sidebar:
     resume_file = st.file_uploader("Upload Resume PDF", type=["pdf"])
     job_desc = st.text_area("Job Description", height=200)
     
-    # Check for secrets first
-    if "GROK_API_KEY" in st.secrets and st.secrets["GROK_API_KEY"]:
-        api_key = st.secrets["GROK_API_KEY"]
-    else:
+    # Check for secrets safely (secrets.toml may not exist)
+    try:
+        api_key = st.secrets.get("GROK_API_KEY") or ""
+    except Exception:
+        api_key = ""
+
+    if not api_key:
         # User must provide their own key
         api_key = st.text_input("Grok API Key", type="password")
 
