@@ -2,6 +2,13 @@ from openai import OpenAI
 import streamlit as st
 import os
 
+# Compatibility: st.rerun() added in 1.27.0; HF Spaces runs 1.25.0
+def _rerun():
+    if hasattr(st, "rerun"):
+        st.rerun()
+    else:
+        st.experimental_rerun()
+
 from resume_parser import parse_resume
 from job_parser import parse_job_description
 from skill_analyzer import analyze_skill_distribution
@@ -230,7 +237,7 @@ if st.session_state.analyzed:
                         next_q = interviewer.generate_question(job_data["raw_text"], st.session_state.interview_history)
                         st.session_state.interview_history[-1]["feedback"] = feedback # Attach feedback to user answer
                         st.session_state.interview_history.append({"role": "assistant", "content": next_q})
-                        st.rerun()
+                        _rerun()
             else:
                 st.error("API Key required to continue interview.")
 
