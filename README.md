@@ -1,15 +1,3 @@
----
-title: AI Resume Analyzer
-emoji: 📄
-colorFrom: blue
-colorTo: indigo
-sdk: streamlit
-sdk_version: 1.25.0
-app_file: app.py
-pinned: false
-python_version: "3.10"
----
-
 # 📄 AI-Based Resume Analyzer & Resume–Job Fit Reasoning System
 
 An AI-powered resume analysis tool that evaluates how well a resume matches a job description. It uses **Groq's LLaMA 3.3 70B** model for intelligent ATS scoring, skill gap detection, cover letter generation, resume refinement, and mock interview simulation — all in a clean Streamlit interface.
